@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/iron_block",
+    "side": "unorganizeddeco:block/iron_barrel_side",
+    "top": "unorganizeddeco:block/iron_barrel_top"
+  }
+}

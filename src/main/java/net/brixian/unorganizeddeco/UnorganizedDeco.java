@@ -1,5 +1,6 @@
 package net.brixian.unorganizeddeco;
 
+import net.brixian.unorganizeddeco.registry.UDecoBlockEntities;
 import net.brixian.unorganizeddeco.registry.UDecoBlocks;
 import net.brixian.unorganizeddeco.registry.UDecoCreativeTab;
 import net.fabricmc.api.ModInitializer;
@@ -18,6 +19,7 @@ public class UnorganizedDeco implements ModInitializer {
 	public void onInitialize() {
 		UDecoBlocks.registerModBlocks();
 		UDecoCreativeTab.registerEDModCreativeModeTabs();
+		UDecoBlockEntities.register();
 
 
 		LOGGER.info("Hey Chat Un0rg4NiZedDec0 here");

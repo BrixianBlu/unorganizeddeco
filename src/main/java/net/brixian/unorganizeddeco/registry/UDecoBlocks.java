@@ -1,7 +1,10 @@
 package net.brixian.unorganizeddeco.registry;
 
-import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import net.brixian.unorganizeddeco.UnorganizedDeco;
+import net.brixian.unorganizeddeco.block.BarrelBlock;
+import net.brixian.unorganizeddeco.block.crop_blocks.AppleBlock;
+import net.brixian.unorganizeddeco.block.crop_blocks.ChorusBlock;
+import net.brixian.unorganizeddeco.block.crop_blocks.GoldenAppleBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -19,11 +22,6 @@ import net.minecraft.world.level.material.PushReaction;
 import java.util.function.Function;
 
 public class UDecoBlocks {
-    private static final Identifier CUSTOM_SIGN_ID = Identifier.fromNamespaceAndPath(UnorganizedDeco.MOD_ID, "custom_sign");
-    private static final Identifier CUSTOM_WALL_SIGN_ID = Identifier.fromNamespaceAndPath(UnorganizedDeco.MOD_ID, "custom_wall_sign");
-    private static final Identifier CUSTOM_HANGING_SIGN_ID = Identifier.fromNamespaceAndPath(UnorganizedDeco.MOD_ID, "custom_hanging_sign");
-    private static final Identifier CUSTOM_WALL_HANGING_SIGN_ID = Identifier.fromNamespaceAndPath(UnorganizedDeco.MOD_ID, "custom_wall_hanging_sign");
-
     //Stone
     public static final Block STONE_PILLAR = registerBlock("stone_pillar", props -> new RotatedPillarBlock(props.strength(1.5F, 6.0F).requiresCorrectToolForDrops().instrument(NoteBlockInstrument.BASEDRUM)));
     public static final Block POLISHED_STONE = registerBlock("polished_stone", props -> new Block(props.strength(1.5F, 6.0F).requiresCorrectToolForDrops().instrument(NoteBlockInstrument.BASEDRUM)));
@@ -117,8 +115,8 @@ public class UDecoBlocks {
      public static final Block POLISHED_NETHERRACK_WALL = registerBlock("polished_netherrack_wall", props -> new WallBlock(props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
     public static final Block NETHERRACK_PILLAR = registerBlock("netherrack_pillar", props -> new RotatedPillarBlock(props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
     public static final Block CHISELED_NETHERRACK = registerBlock("chiseled_netherrack", props -> new Block(props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
-    public static final Block NETHERRACKS_TILES = registerBlock("netherrack_tiles", props -> new Block(props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
-     public static final Block NETHERRACK_TILES_STAIRS = registerBlock("netherrack_tiles_stairs", props -> new StairBlock(NETHERRACKS_TILES.defaultBlockState(), props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
+    public static final Block NETHERRACK_TILES = registerBlock("netherrack_tiles", props -> new Block(props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
+     public static final Block NETHERRACK_TILES_STAIRS = registerBlock("netherrack_tiles_stairs", props -> new StairBlock(NETHERRACK_TILES.defaultBlockState(), props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
      public static final Block NETHERRACK_TILES_SLAB = registerBlock("netherrack_tiles_slab", props -> new SlabBlock(props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
      public static final Block NETHERRACK_TILES_WALL = registerBlock("netherrack_tiles_wall", props -> new WallBlock(props.mapColor(MapColor.NETHER).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.4F).sound(SoundType.NETHERRACK)));
 
@@ -136,7 +134,6 @@ public class UDecoBlocks {
      public static final Block BASALT_BRICK_WALL = registerBlock("basalt_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(SoundType.BASALT)));
     public static final Block SMOOTH_BASALT_STAIRS = registerBlock("smooth_basalt_stairs", props -> new StairBlock(Blocks.SMOOTH_BASALT.defaultBlockState(), props.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(SoundType.BASALT)));
     public static final Block SMOOTH_BASALT_SLAB = registerBlock("smooth_basalt_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(SoundType.BASALT)));
-    public static final Block SMOOTH_BASALT_WALL = registerBlock("smooth_basalt_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(SoundType.BASALT)));
     public static final Block CHISELED_BASALT = registerBlock("chiseled_basalt", props -> new Block(props.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(SoundType.BASALT)));
     public static final Block BASALT_PILLAR = registerBlock("basalt_pillar", props -> new RotatedPillarBlock(props.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(SoundType.BASALT)));
     public static final Block BASALT_TILES = registerBlock("basalt_tiles", props -> new Block(props.mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(SoundType.BASALT)));
@@ -178,6 +175,7 @@ public class UDecoBlocks {
     public static final Block LAPIS_BRICKS = registerBlock("lapis_bricks", props -> new Block(props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
      public static final Block LAPIS_BRICK_STAIRS = registerBlock("lapis_brick_stairs", props -> new StairBlock(LAPIS_BRICKS.defaultBlockState(), props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
      public static final Block LAPIS_BRICK_SLAB = registerBlock("lapis_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
+    public static final Block LAPIS_BRICK_WALL = registerBlock("lapis_brick_wall", props -> new WallBlock(props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
     public static final Block SMOOTH_LAPIS = registerBlock("smooth_lapis", props -> new Block(props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
      public static final Block SMOOTH_LAPIS_STAIRS = registerBlock("smooth_lapis_stairs", props -> new StairBlock(SMOOTH_LAPIS.defaultBlockState(), props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
      public static final Block SMOOTH_LAPIS_SLAB = registerBlock("smooth_lapis_slab", props -> new SlabBlock(props.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F)));
@@ -212,9 +210,107 @@ public class UDecoBlocks {
      public static final Block QUARTZ_TILES_SLAB = registerBlock("quartz_tiles_slab", props -> new SlabBlock(props.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F)));
      public static final Block QUARTZ_TILES_WALL = registerBlock("quartz_tiles_wall", props -> new WallBlock(props.mapColor(MapColor.QUARTZ).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(0.8F)));
 
+     // BRICKS KILL ME
+    public static final Block WHITE_BRICKS = registerBlock("white_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+     public static final Block WHITE_BRICK_STAIRS = registerBlock("white_brick_stairs", props -> new StairBlock(WHITE_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+     public static final Block WHITE_BRICK_SLAB = registerBlock("white_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+     public static final Block WHITE_BRICK_WALL = registerBlock("white_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block GRAY_BRICKS = registerBlock("gray_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block GRAY_BRICK_STAIRS = registerBlock("gray_brick_stairs", props -> new StairBlock(GRAY_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block GRAY_BRICK_SLAB = registerBlock("gray_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block GRAY_BRICK_WALL = registerBlock("gray_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIGHT_GRAY_BRICKS = registerBlock("light_gray_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIGHT_GRAY_BRICK_STAIRS = registerBlock("light_gray_brick_stairs", props -> new StairBlock(LIGHT_GRAY_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIGHT_GRAY_BRICK_SLAB = registerBlock("light_gray_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIGHT_GRAY_BRICK_WALL = registerBlock("light_gray_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BLACK_BRICKS = registerBlock("black_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BLACK_BRICK_STAIRS = registerBlock("black_brick_stairs", props -> new StairBlock(BLACK_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BLACK_BRICK_SLAB = registerBlock("black_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BLACK_BRICK_WALL = registerBlock("black_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block RED_BRICKS = registerBlock("red_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block RED_BRICK_STAIRS = registerBlock("red_brick_stairs", props -> new StairBlock(RED_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block RED_BRICK_SLAB = registerBlock("red_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block RED_BRICK_WALL = registerBlock("red_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block ORANGE_BRICKS = registerBlock("orange_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block ORANGE_BRICK_STAIRS = registerBlock("orange_brick_stairs", props -> new StairBlock(ORANGE_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block ORANGE_BRICK_SLAB = registerBlock("orange_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block ORANGE_BRICK_WALL = registerBlock("orange_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block YELLOW_BRICKS = registerBlock("yellow_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block YELLOW_BRICK_STAIRS = registerBlock("yellow_brick_stairs", props -> new StairBlock(YELLOW_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block YELLOW_BRICK_SLAB = registerBlock("yellow_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block YELLOW_BRICK_WALL = registerBlock("yellow_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIME_BRICKS = registerBlock("lime_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIME_BRICK_STAIRS = registerBlock("lime_brick_stairs", props -> new StairBlock(LIME_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIME_BRICK_SLAB = registerBlock("lime_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIME_BRICK_WALL = registerBlock("lime_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block GREEN_BRICKS = registerBlock("green_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block GREEN_BRICK_STAIRS = registerBlock("green_brick_stairs", props -> new StairBlock(GREEN_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block GREEN_BRICK_SLAB = registerBlock("green_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block GREEN_BRICK_WALL = registerBlock("green_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block CYAN_BRICKS = registerBlock("cyan_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block CYAN_BRICK_STAIRS = registerBlock("cyan_brick_stairs", props -> new StairBlock(CYAN_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block CYAN_BRICK_SLAB = registerBlock("cyan_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block CYAN_BRICK_WALL = registerBlock("cyan_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIGHT_BLUE_BRICKS = registerBlock("light_blue_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIGHT_BLUE_BRICK_STAIRS = registerBlock("light_blue_brick_stairs", props -> new StairBlock(LIGHT_BLUE_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIGHT_BLUE_BRICK_SLAB = registerBlock("light_blue_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block LIGHT_BLUE_BRICK_WALL = registerBlock("light_blue_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BLUE_BRICKS = registerBlock("blue_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BLUE_BRICK_STAIRS = registerBlock("blue_brick_stairs", props -> new StairBlock(BLUE_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BLUE_BRICK_SLAB = registerBlock("blue_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BLUE_BRICK_WALL = registerBlock("blue_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block PURPLE_BRICKS = registerBlock("purple_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block PURPLE_BRICK_STAIRS = registerBlock("purple_brick_stairs", props -> new StairBlock(PURPLE_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block PURPLE_BRICK_SLAB = registerBlock("purple_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block PURPLE_BRICK_WALL = registerBlock("purple_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block MAGENTA_BRICKS = registerBlock("magenta_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block MAGENTA_BRICK_STAIRS = registerBlock("magenta_brick_stairs", props -> new StairBlock(MAGENTA_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block MAGENTA_BRICK_SLAB = registerBlock("magenta_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block MAGENTA_BRICK_WALL = registerBlock("magenta_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block PINK_BRICKS = registerBlock("pink_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block PINK_BRICK_STAIRS = registerBlock("pink_brick_stairs", props -> new StairBlock(PINK_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block PINK_BRICK_SLAB = registerBlock("pink_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block PINK_BRICK_WALL = registerBlock("pink_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BROWN_BRICKS = registerBlock("brown_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BROWN_BRICK_STAIRS = registerBlock("browm_brick_stairs", props -> new StairBlock(BROWN_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BROWN_BRICK_SLAB = registerBlock("browm_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block BROWN_BRICK_WALL = registerBlock("brown_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block MONOCHROME_BRICKS = registerBlock("monochrome_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block MONOCHROME_BRICK_STAIRS = registerBlock("monochrome_brick_stairs", props -> new StairBlock(MONOCHROME_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block MONOCHROME_BRICK_SLAB = registerBlock("monochrome_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block MONOCHROME_BRICK_WALL = registerBlock("monochrome_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block WARM_BRICKS = registerBlock("warm_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block WARM_BRICK_STAIRS = registerBlock("warm_brick_stairs", props -> new StairBlock(WARM_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block WARM_BRICK_SLAB = registerBlock("warm_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block WARM_BRICK_WALL = registerBlock("warm_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block COLD_BRICKS = registerBlock("cold_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block COLD_BRICK_STAIRS = registerBlock("cold_brick_stairs", props -> new StairBlock(COLD_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block COLD_BRICK_SLAB = registerBlock("cold_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block COLD_BRICK_WALL = registerBlock("cold_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block SPRING_BRICKS = registerBlock("spring_bricks", props -> new Block(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block SPRING_BRICK_STAIRS = registerBlock("spring_brick_stairs", props -> new StairBlock(SPRING_BRICKS.defaultBlockState(), props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block SPRING_BRICK_SLAB = registerBlock("spring_brick_slab", props -> new SlabBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+    public static final Block SPRING_BRICK_WALL = registerBlock("spring_brick_wall", props -> new WallBlock(props.mapColor(MapColor.COLOR_RED).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2.0F, 6.0F)));
+
+
     //LANTERNS
     public static final Block LARGE_LANTERN = registerBlock("large_lantern", props -> new Block(props.mapColor(MapColor.METAL).forceSolidOn().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 15).noOcclusion().pushReaction(PushReaction.POPPED)));
     public static final Block LARGE_SOUL_LANTERN = registerBlock("large_soul_lantern", props -> new Block(props.mapColor(MapColor.METAL).forceSolidOn().strength(3.5F).sound(SoundType.LANTERN).lightLevel((state) -> 8).noOcclusion().pushReaction(PushReaction.POPPED)));
+
+    //CROP BLOCKS
+    public static final Block LARGE_APPLE = registerBlock("large_apple", props -> new AppleBlock(props.strength(1.0f)));
+    public static final Block CARVED_LARGE_APPLE = registerBlock("carved_large_apple", props -> new CarvedPumpkinBlock(props.strength(1.0f)));
+    public static final Block LARGE_CHORUS_FRUIT = registerBlock("large_chorus_fruit", props -> new ChorusBlock(props.strength(1.0f)));
+    public static final Block CARVED_LARGE_CHORUS_FRUIT = registerBlock("carved_large_chorus_fruit", props -> new CarvedPumpkinBlock(props.strength(1.0f)));
+    public static final Block LARGE_CARROT = registerBlock("large_carrot", props -> new Block(props.strength(1.0f)));
+    public static final Block LARGE_POTATO = registerBlock("large_potato", props -> new Block(props.strength(1.0f)));
+    public static final Block LARGE_BEETROOT = registerBlock("large_beetroot", props -> new Block(props.strength(1.0f)));
+    public static final Block LARGE_GOLDEN_APPLE = registerBlock("large_golden_apple", props -> new GoldenAppleBlock(props.strength(1.0f)));
+    public static final Block CARVED_LARGE_GOLDEN_APPLE = registerBlock("carved_large_golden_apple", props -> new CarvedPumpkinBlock(props.strength(1.0f)));
+
+    //METAL BARRELS
+    public static final Block IRON_BARREL = registerBlock("iron_barrel", props -> new BarrelBlock(props.mapColor(MapColor.METAL).instrument(NoteBlockInstrument.IRON_XYLOPHONE).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.IRON)));
+    public static final Block GOLD_BARREL = registerBlock("gold_barrel", props -> new BarrelBlock(props.mapColor(MapColor.GOLD).instrument(NoteBlockInstrument.BELL).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.METAL)));
 
 
     public static ResourceKey<Block> getRK(Block block) {
