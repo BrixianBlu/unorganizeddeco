@@ -13,6 +13,5 @@ public class UnorganizedDecoDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(UDModelData::new);
 		pack.addProvider(UDBlockTagData::new);
 		pack.addProvider(UDREcipeData::new);
-
 	}
 }
